@@ -1,7 +1,12 @@
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 import { FaLinkedin, FaFacebook, FaDiscord, FaBehance, FaMedium } from "react-icons/fa";
+import { NextPage } from "next";
 
-export default function Form() {
+interface Props {
+    onSubmit: () => void;
+}
+
+const Form: NextPage<Props> = ({ onSubmit }) => {
     return (
         <form>
             <div className="container flex flex-col  w-[80vw]">
@@ -154,6 +159,7 @@ export default function Form() {
                 <div className="mt-3">
                     <div className="flex flex-row gap-4 justify-end">
                         <Button
+                            onClick={onSubmit}
                             outline={true}>
                             Preview
                         </Button>
@@ -167,29 +173,4 @@ export default function Form() {
     );
 }
 
-
-
-{/* <form className="flex flex-col gap-4 w-[32rem]">
-                <div>
-                    <div className="mb-2 block">
-                        <Label
-                            htmlFor="password1"
-                            value="Full Name"
-                        />
-                    </div>
-                    <TextInput
-                        id="password1"
-                        type="password"
-                        required={true}
-                    />
-                </div>
-
-                
-
-                
-
-           
-
-
-                
-            </form> */}
+export default Form;
