@@ -8,20 +8,20 @@ export default function Home() {
   return (
     <div className='grid justify-center'>
       <Form onSubmit={download}></Form>
-      <iframe></iframe>
-      <Button onClick={download}>CLick</Button>
+      {/* <Signature></Signature>     */}
+      <div>d</div>
     </div>
   )
 }
 
 const download = () => {
-  saveData(ReactDOMServer.renderToStaticMarkup(<Signature></Signature>));
+  saveData(ReactDOMServer.renderToString(<Signature></Signature>));
 }
 
 function saveData(data: any) {
   axios.post('/api/signature', {
     content: data
   }).then((response) => console.log(response.data.link));
-  
+
 }
 
