@@ -8,14 +8,13 @@ export default function Home() {
   return (
     <div className='grid justify-center'>
       <Form onSubmit={download}></Form>
-      {/* <Signature></Signature>     */}
       <div>d</div>
     </div>
   )
 }
 
-const download = () => {
-  saveData(ReactDOMServer.renderToString(<Signature></Signature>));
+const download = (data:any) => {
+  saveData(ReactDOMServer.renderToString(<Signature  data={data}></Signature>));
 }
 
 function saveData(data: any) {

@@ -1,21 +1,25 @@
+import { NextPage } from 'next';
 import Image from 'next/image';
 
-export default function Signature() {
+interface Props {
+    data: any;
+}
+
+const Signature: NextPage<Props> = ({ data }) => {
     return (
         <>
             <html lang="en">
                 <head>
                     <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
                     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                    <title>Document</title>
                     <script src="https://cdn.tailwindcss.com"></script>
                     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet"></link>
                 </head>
                 <body>
                     <div className="flex flex-col  w-[800px] font-sans">
                         <div>
-                            <p className="font-semibold">Harsha Abeyvickrama</p>
-                            <p className="italic">Intern Software Engineer</p>
+                            <p className="font-semibold">{data.fullname}</p>
+                            <p className="italic">{data.designation}</p>
                         </div>
                         <div className="flex flex-row items-center">
                             <div className="flex flex-row w-1/2 border-r-2  border-dotted items-center ">
@@ -48,7 +52,7 @@ export default function Signature() {
                                         </div>
                                         <div>
                                             <span className='text-gray-500 italic'>Mobile : </span>
-                                            <span>0711425085</span>
+                                            <span>{data.contact}</span>
                                         </div>
                                         <div>
                                             <span className='text-gray-500 italic'>Web : </span>
@@ -56,7 +60,7 @@ export default function Signature() {
                                         </div>
                                         <div>
                                             <span className='text-gray-500 italic'>Email : </span>
-                                            <span><a className='text-blue-600' href="mailto:harshaabeyvickrama@gmail.com">harshaabeyvickrama@gmail.com</a></span>
+                                            <span><a className='text-blue-600' href={`mailto:${data.email}`}></a>{data.email}</span>
                                         </div>
                                     </div>
                                     <div className='w-1/4'>
@@ -64,31 +68,46 @@ export default function Signature() {
                                     </div>
                                 </div>
                                 <div>
-                                    <span className='mr-2'>
-                                        <a href="">
-                                            <i className="ri-linkedin-fill text-lg"></i>
-                                        </a>
-                                    </span>
-                                    <span className='mr-2'>
-                                        <a href="">
-                                            <i className="ri-facebook-fill text-lg"></i>
-                                        </a>
-                                    </span>
-                                    <span className='mr-2'>
-                                        <a href="">
-                                            <i className="ri-discord-fill text-lg"></i>
-                                        </a>
-                                    </span>
-                                    <span className='mr-2'>
-                                        <a href="">
-                                            <i className="ri-behance-fill text-lg"></i>
-                                        </a>
-                                    </span>
-                                    <span className='mr-2'>
-                                        <a href="">
-                                            <i className="ri-medium-fill text-lg"></i>
-                                        </a>
-                                    </span>
+                                    {
+                                        data.social.linkedin !== "" &&
+                                        <span className='mr-2'>
+                                            <a href={`https://www.linkedin.com/in/${data.social.linkedin}`}>
+                                                <i className="ri-linkedin-fill text-lg"></i>
+                                            </a>
+                                        </span>
+                                    }
+                                    {
+                                        data.social.facebook !== "" &&
+                                        <span className='mr-2'>
+                                            <a href={`https://www.facebook.com/${data.social.facebook}`}>
+                                                <i className="ri-facebook-fill text-lg"></i>
+                                            </a>
+                                        </span>
+                                    }
+                                    {
+                                        data.social.discord !== "" &&
+                                        <span className='mr-2'>
+                                            <a href={`discordapp.com/users/${data.social.discord}`}>
+                                                <i className="ri-discord-fill text-lg"></i>
+                                            </a>
+                                        </span>
+                                    }
+                                    {
+                                        data.social.discord !== "" &&
+                                        <span className='mr-2'>
+                                            <a href={`https://www.behance.net/${data.social.behance}`}>
+                                                <i className="ri-behance-fill text-lg"></i>
+                                            </a>
+                                        </span>
+                                    }
+                                    {
+                                        data.social.medium !== "" &&
+                                        <span className='mr-2'>
+                                            <a href={`https://${data.social.medium}.medium.com/`}>
+                                                <i className="ri-medium-fill text-lg"></i>
+                                            </a>
+                                        </span>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -106,3 +125,5 @@ export default function Signature() {
         </>
     );
 }
+
+export default Signature;

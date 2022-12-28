@@ -3,12 +3,33 @@ import { FaLinkedin, FaFacebook, FaDiscord, FaBehance, FaMedium } from "react-ic
 import { NextPage } from "next";
 
 interface Props {
-    onSubmit: () => void;
+    onSubmit: (data: any) => void;
 }
 
-const Form: NextPage<Props> = ({ onSubmit }) => {
+
+const Form: NextPage<Props> = (props) => {
+    const { onSubmit } = props;
+
+    const onPreviewClicked = (e: any) => {
+        e.preventDefault();
+        const data = e.target;
+        var obj = {
+            fullname: data.fullname.value,
+            designation: data.designation.value,
+            email: data.email.value,
+            contact: data.contact.value,
+            social: {
+                linkedin: data.linkedin.value,
+                facebook: data.facebook.value,
+                discord: data.discord.value,
+                behance: data.behance.value,
+                medium: data.medium.value,
+            }
+        }
+        onSubmit(obj);
+    }
     return (
-        <form>
+        <form id="signature-form" onSubmit={onPreviewClicked}>
             <div className="container flex flex-col  w-[80vw]">
                 <div className="flex flex-row h-full p-1">
                     <div className="w-full p-2">
@@ -79,10 +100,9 @@ const Form: NextPage<Props> = ({ onSubmit }) => {
                                     value="LinkedIn"
                                 />
                             </div>
-                            {/* https://www.linkedin.com/in/username */}
                             <TextInput
                                 id="linkedin"
-                                type="url"
+                                type="text"
                                 icon={FaLinkedin}
                                 placeholder="@username"
                                 required={true}
@@ -99,7 +119,7 @@ const Form: NextPage<Props> = ({ onSubmit }) => {
                             {/* https://www.facebook.com/username */}
                             <TextInput
                                 id="facebook"
-                                type="url"
+                                type="text"
                                 icon={FaFacebook}
                                 placeholder="@username"
                             />
@@ -115,7 +135,7 @@ const Form: NextPage<Props> = ({ onSubmit }) => {
                             {/* discordapp.com/users/userID */}
                             <TextInput
                                 id="discord"
-                                type="url"
+                                type="text"
                                 icon={FaDiscord}
                                 placeholder="@discordID"
                             />
@@ -131,7 +151,7 @@ const Form: NextPage<Props> = ({ onSubmit }) => {
                             {/* https://www.behance.net/username */}
                             <TextInput
                                 id="behance"
-                                type="url"
+                                type="text"
                                 icon={FaBehance}
                                 placeholder="@username"
                             />
@@ -147,7 +167,7 @@ const Form: NextPage<Props> = ({ onSubmit }) => {
                             {/* https://harshaabeyvickrama.medium.com/ */}
                             <TextInput
                                 id="medium"
-                                type="url"
+                                type="text"
                                 icon={FaMedium}
                                 placeholder="@username"
                             />
@@ -159,11 +179,11 @@ const Form: NextPage<Props> = ({ onSubmit }) => {
                 <div className="mt-3">
                     <div className="flex flex-row gap-4 justify-end">
                         <Button
-                            onClick={onSubmit}
+                            onClick={onPreviewClicked}
                             outline={true}>
                             Preview
                         </Button>
-                        <Button type="submit" >
+                        <Button type="submit">
                             Download
                         </Button>
                     </div>
