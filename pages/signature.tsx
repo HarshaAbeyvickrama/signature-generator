@@ -6,8 +6,8 @@ interface Props {
 }
 
 const Signature: NextPage<Props> = ({ data }) => {
-    console.log(data);
-    
+    if (data == undefined) return <></>;
+
     return (
         <>
             <html lang="en">
