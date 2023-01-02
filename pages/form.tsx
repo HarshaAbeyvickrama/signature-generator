@@ -26,6 +26,8 @@ const Form: NextPage<Props> = (props) => {
                 medium: data.medium.value ?? '',
             }
         }
+        console.log(obj);
+        
         onSubmit(obj);
     }
     return (
