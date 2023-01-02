@@ -14,16 +14,16 @@ const Form: NextPage<Props> = (props) => {
         e.preventDefault();
         const data = e.target;
         var obj = {
-            fullname: data.fullname.value,
-            designation: data.designation.value,
-            email: data.email.value,
-            contact: data.contact.value,
+            fullname: data.fullname.value ?? '',
+            designation: data.designation.value ?? '',
+            email: data.email.value ?? '',
+            contact: data.contact.value ?? '',
             social: {
-                linkedin: data.linkedin.value,
-                facebook: data.facebook.value,
-                discord: data.discord.value,
-                behance: data.behance.value,
-                medium: data.medium.value,
+                linkedin: data.linkedin.value ?? '',
+                facebook: data.facebook.value ?? '',
+                discord: data.discord.value ?? '',
+                behance: data.behance.value ?? '',
+                medium: data.medium.value ?? '',
             }
         }
         onSubmit(obj);
