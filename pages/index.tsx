@@ -13,11 +13,12 @@ export default function Home() {
   )
 }
 
-const download = (data:any) => {
-  saveData(ReactDOMServer.renderToString(<Signature  data={data}></Signature>));
+const download = (data: any) => {
+  saveData(ReactDOMServer.renderToString(<Signature data={data}></Signature>));
 }
 
 function saveData(data: any) {
+   
   axios.post('/api/signature', {
     content: data
   }).then((response) => console.log(response.data.link));

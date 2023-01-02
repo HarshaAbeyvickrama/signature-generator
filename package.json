@@ -17,6 +17,7 @@
     "browserify-fs": "^1.0.0",
     "eslint": "8.30.0",
     "eslint-config-next": "13.1.1",
+    "firebase": "^9.15.0",
     "flowbite": "^1.5.5",
     "flowbite-react": "^0.3.7",
     "next": "13.1.1",

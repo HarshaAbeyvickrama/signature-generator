@@ -6,7 +6,9 @@ interface Props {
 }
 
 const Signature: NextPage<Props> = ({ data }) => {
-    if (data == undefined) return <></>;
+    if (data == undefined) return <div></div>;
+
+    const host = window.location.protocol + "://"+ window.location.hostname;
 
     return (
         <>

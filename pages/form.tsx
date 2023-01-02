@@ -25,9 +25,7 @@ const Form: NextPage<Props> = (props) => {
                 behance: data.behance ? data.behance.value : '',
                 medium: data.medium ? data.medium.value : '',
             }
-        }
-        console.log(obj);
-        
+        }        
         onSubmit(obj);
     }
     return (
@@ -181,7 +179,7 @@ const Form: NextPage<Props> = (props) => {
                 <div className="mt-3">
                     <div className="flex flex-row gap-4 justify-end">
                         <Button
-                            onClick={onPreviewClicked}
+                            // onClick={onPreviewClicked}
                             outline={true}>
                             Preview
                         </Button>
