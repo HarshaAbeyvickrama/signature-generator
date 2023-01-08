@@ -4,7 +4,7 @@ import { NextPage } from "next";
 
 interface Props {
     onSubmit: (data: any) => void;
-    onDownload: (data: any) => void;
+    onDownload: (uri: string,name:string) => void;
     downloadURL: string
 }
 
