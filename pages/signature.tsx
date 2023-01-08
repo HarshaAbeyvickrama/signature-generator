@@ -16,6 +16,7 @@ const Signature: NextPage<Props> = ({ data }) => {
                 <head>
                     <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
                     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                    <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
                     <script src="https://cdn.tailwindcss.com"></script>
                     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet"></link>
                 </head>
@@ -28,9 +29,9 @@ const Signature: NextPage<Props> = ({ data }) => {
                         <div className="flex flex-row items-center">
                             <div className="flex flex-row w-1/2 border-r-2  border-dotted items-center ">
                                 <div className='2'>
-                                    <Image
-                                        src="/assets/bitzquad-logo.png"
-                                        alt="Picture of the author"
+                                    <img
+                                        src="https://cdn.discordapp.com/attachments/1061607551600443465/1061607600128528454/bitzquad-logo.png"
+                                        alt="Bitzquad Logo"
                                         width={200}
                                         height={200}
                                     />

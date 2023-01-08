@@ -4,11 +4,13 @@ import { NextPage } from "next";
 
 interface Props {
     onSubmit: (data: any) => void;
+    onDownload: (data: any) => void;
+    downloadURL: string
 }
 
 
 const Form: NextPage<Props> = (props) => {
-    const { onSubmit } = props;
+    const { onSubmit, downloadURL ,onDownload} = props;
 
     const onPreviewClicked = (e: any) => {
         e.preventDefault();
@@ -16,7 +18,7 @@ const Form: NextPage<Props> = (props) => {
         var obj = {
             fullname: data.fullname ? data.fullname.value : '',
             designation: data.designation ? data.designation.value : '',
-            email: data.email  ? data.email.value : '',
+            email: data.email ? data.email.value : '',
             contact: data.contact ? data.contact.value : '',
             social: {
                 linkedin: data.linkedin ? data.linkedin.value : '',
@@ -25,7 +27,7 @@ const Form: NextPage<Props> = (props) => {
                 behance: data.behance ? data.behance.value : '',
                 medium: data.medium ? data.medium.value : '',
             }
-        }        
+        }
         onSubmit(obj);
     }
     return (
@@ -172,20 +174,27 @@ const Form: NextPage<Props> = (props) => {
                                 placeholder="@username"
                             />
                         </div>
-
                     </div>
 
                 </div>
                 <div className="mt-3">
                     <div className="flex flex-row gap-4 justify-end">
                         <Button
-                            // onClick={onPreviewClicked}
+                            type="submit"
                             outline={true}>
-                            Preview
+                            Generate
                         </Button>
-                        <Button type="submit">
-                            Download
-                        </Button>
+                        {
+                            downloadURL != '' &&
+                            <Button
+                                type="submit"
+                                onClick={()=>{
+                                    onDownload(downloadURL,'signature.html')
+                                }}
+                            >
+                                Download
+                            </Button>
+                        }
                     </div>
                 </div>
             </div>

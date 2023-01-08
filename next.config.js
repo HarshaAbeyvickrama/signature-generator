@@ -5,10 +5,17 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
+        hostname: 'cdn.discordapp.com',
+        port: '',
+        pathname: '/attachments/**',
+      },
+      {
+        protocol: 'https',
         hostname: 'harshaabeyvickrama.github.io',
         port: '',
         pathname: '/public/assets/**',
       },
+      
     ],
   }
 }
